@@ -82,9 +82,13 @@ type Props = {
 };
 
 export default async function Home({ searchParams }: Props) {
-  const page = Number(searchParams?.page) || 1;
-  const searchText = searchParams?.query || '';
-  const category = searchParams?.category || '';
+  // Await the searchParams to ensure they are available
+  const params = await searchParams;
+
+  // Now you can safely access the properties
+  const page = Number(params?.page) || 1;
+  const searchText = params?.query || '';
+  const category = params?.category || '';
 
   const events = await getAllEvents({
     query: searchText,
@@ -94,7 +98,7 @@ export default async function Home({ searchParams }: Props) {
   });
 
   return (
-    <>
+    <div>
       <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
@@ -120,10 +124,7 @@ export default async function Home({ searchParams }: Props) {
         </div>
       </section>
 
-      <section
-        id="events"
-        className="wrapper my-8 flex flex-col gap-8 md:gap-12"
-      >
+      <section id="events" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">
           Trusted by <br /> Thousands of Events
         </h2>
@@ -143,6 +144,6 @@ export default async function Home({ searchParams }: Props) {
           totalPages={events?.totalPages}
         />
       </section>
-    </>
+    </div>
   );
 }
