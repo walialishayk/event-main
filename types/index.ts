@@ -143,13 +143,13 @@ export type RemoveUrlQueryParams = {
   keysToRemove: string[]
 }
 
-// export type SearchParamProps = {
-//   params: { id: string }
-//   searchParams: { [key: string]: string | string[] | undefined }
-// }
+export type SearchParamProps = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
 // types/index.ts
 
-export interface SearchParamProps {
-  params: { id: string };
-  searchParams: { [key: string]: string | string[] | undefined };
-}
+// export interface SearchParamProps {
+//   params: { id: string };
+//   searchParams: { [key: string]: string | string[] | undefined };
+// }
