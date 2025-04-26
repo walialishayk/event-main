@@ -26,17 +26,22 @@ const Header = () => {
           </nav>
         </SignedIn>
 
-        <div className="flex w-32 justify-end gap-3">
-          <SignedIn>
+        {/* SignedIn block for user actions */}
+        <SignedIn>
+          <div className="flex w-32 justify-end gap-3">
             <UserButton afterSignOutUrl="/" />
             <MobileNav />
-          </SignedIn>
-          <SignedOut>
+          </div>
+        </SignedIn>
+
+        {/* SignedOut block for login button */}
+        <SignedOut>
+          <div className="flex w-32 justify-end">
             <Button asChild className="rounded-full" size="lg">
               <Link href="/sign-in">Login</Link>
             </Button>
-          </SignedOut>
-        </div>
+          </div>
+        </SignedOut>
       </div>
     </header>
   );
