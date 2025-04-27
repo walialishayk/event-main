@@ -1,6 +1,7 @@
 'use server'
 
 import { revalidatePath } from 'next/cache'
+
 import { connectToDatabase } from '@/lib/database'
 import User from '@/lib/database/models/user.model'
 import Order from '@/lib/database/models/order.model'
@@ -14,11 +15,14 @@ export async function createUser(user: CreateUserParams) {
     await connectToDatabase()
 
     const newUser = await User.create(user)
+    console.log('User successfully created:', newUser);
     return JSON.parse(JSON.stringify(newUser))
-  } catch (error) {
+  } catch (error: any) {
+    console.error('Error while creating user:', error.message);
     handleError(error)
   }
 }
+
 
 export async function getUserById(userId: string) {
   try {
