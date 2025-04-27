@@ -75,6 +75,7 @@ import Link from 'next/link';
 
 export default async function Home({ searchParams }: SearchParamProps) {
   const params = await searchParams; // 🔥 Await it first
+  // lets see what happens next
 
   const page = Number(params?.page) || 1;
   const searchText = (params?.query as string) || '';
